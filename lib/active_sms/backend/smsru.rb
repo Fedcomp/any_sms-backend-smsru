@@ -1,4 +1,6 @@
 require "net/http"
+require "bigdecimal"
+require "bigdecimal/util"
 require "active_sms"
 require "active_sms/backend/smsru/version"
 
@@ -18,7 +20,7 @@ class ActiveSMS::Backend::Smsru < ActiveSMS::Backend::Base
     when 100
       respond_with_status :success
     else
-      respond_with_status "unknown_status_#{data[:status]}".to_sym
+      respond_with_status "unhandled_status_#{data[:status]}".to_sym
     end
   end
 

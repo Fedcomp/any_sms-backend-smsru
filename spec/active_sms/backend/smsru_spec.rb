@@ -1,6 +1,4 @@
 require "date"
-require "bigdecimal"
-require "bigdecimal/util"
 require "spec_helper"
 
 describe ActiveSMS::Backend::Smsru do
