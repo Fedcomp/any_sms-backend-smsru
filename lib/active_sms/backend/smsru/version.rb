@@ -1,8 +1,6 @@
 # rubocop:disable Style/ClassAndModuleChildren
 module ActiveSMS
   module Backend
-    class Smsru
-      VERSION = "0.0.1".freeze
-    end
+    SMSRU_VERSION = "0.0.1".freeze
   end
 end
