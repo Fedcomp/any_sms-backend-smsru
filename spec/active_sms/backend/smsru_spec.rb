@@ -1,6 +1,6 @@
 require "date"
-require 'bigdecimal'
-require 'bigdecimal/util'
+require "bigdecimal"
+require "bigdecimal/util"
 require "spec_helper"
 
 describe ActiveSMS::Backend::Smsru do
@@ -37,11 +37,18 @@ describe ActiveSMS::Backend::Smsru do
     end
 
     context "with api response" do
-      it "code 100" do
+      specify "code 100 - returns success" do
         stub_request(:post, "http://sms.ru/sms/send")
           .to_return(status: 200, body: api_response(100, 50.1))
 
-        expect(subject.send_sms(phone, sms_text).success?).to be(true)
+        expect(subject.send_sms(phone, sms_text)).to be_success
+      end
+
+      specify "unknown code - returns failure" do
+        stub_request(:post, "http://sms.ru/sms/send")
+          .to_return(status: 200, body: api_response(99_999))
+
+        expect(subject.send_sms(phone, sms_text)).to be_failed
       end
     end
   end
