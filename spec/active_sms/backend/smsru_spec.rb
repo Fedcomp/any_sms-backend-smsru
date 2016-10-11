@@ -21,7 +21,7 @@ describe ActiveSMS::Backend::Smsru do
   end
 
   describe ".send_sms" do
-    let(:api_id) { "AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA" }
+    let(:api_id) { "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX" }
     subject { described_class.new api_id: api_id }
 
     let(:phone) { "+100000000" }

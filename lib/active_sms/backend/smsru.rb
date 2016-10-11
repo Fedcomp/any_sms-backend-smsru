@@ -1,11 +1,12 @@
 require "net/http"
-require "bigdecimal"
 require "bigdecimal/util"
 require "active_sms"
-require "active_sms/backend/smsru/version"
 
 class ActiveSMS::Backend::Smsru < ActiveSMS::Backend::Base
   API_URL = "http://sms.ru/sms/send".freeze
+  API_STATUS_CODE = {
+    success: 100
+  }.freeze
 
   def initialize(params = {})
     @api_id = params.delete(:api_id)
@@ -17,7 +18,7 @@ class ActiveSMS::Backend::Smsru < ActiveSMS::Backend::Base
     data = parse(response)
 
     case data[:status]
-    when 100
+    when API_STATUS_CODE[:success]
       respond_with_status :success
     else
       respond_with_status "unhandled_status_#{data[:status]}".to_sym
@@ -29,9 +30,8 @@ class ActiveSMS::Backend::Smsru < ActiveSMS::Backend::Base
   def validate_api_id
     raise ArgumentError, "Your api_id is not set" if @api_id.nil?
 
-    unless @api_id =~ /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/
-      raise ArgumentError, "Your api_id has invalid format"
-    end
+    return if @api_id =~ /\w{8}-\w{4}-\w{4}-\w{4}-\w{12}/
+    raise ArgumentError, "Your api_id has invalid format"
   end
 
   def request_api(params = {})
