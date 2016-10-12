@@ -1,3 +1,7 @@
+AllCops:
+  Exclude:
+    - "lib/active_sms-backend-smsru.rb"
+
 Style/StringLiterals:
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: true
