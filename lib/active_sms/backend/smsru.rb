@@ -1,4 +1,5 @@
 require "net/http"
+require "bigdecimal"
 require "bigdecimal/util"
 require "active_sms"
 
