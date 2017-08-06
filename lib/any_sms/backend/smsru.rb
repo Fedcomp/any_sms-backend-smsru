@@ -1,9 +1,9 @@
 require "net/http"
 require "bigdecimal"
 require "bigdecimal/util"
-require "active_sms"
+require "any_sms"
 
-class ActiveSMS::Backend::Smsru < ActiveSMS::Backend::Base
+class AnySMS::Backend::Smsru < AnySMS::Backend::Base
   API_URL = "http://sms.ru/sms/send".freeze
   API_STATUS_CODE = {
     success: 100

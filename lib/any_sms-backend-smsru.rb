@@ -1,2 +1,2 @@
 # missing file for gem to work with autoloading
-require "active_sms/backend/smsru"
+require "any_sms/backend/smsru"

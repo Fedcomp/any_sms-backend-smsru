@@ -1,9 +1,9 @@
 require "date"
 require "spec_helper"
 
-describe ActiveSMS::Backend::Smsru do
+describe AnySMS::Backend::Smsru do
   it "has a version number" do
-    expect(ActiveSMS::Backend::SMSRU_VERSION).not_to be nil
+    expect(AnySMS::Backend::SMSRU_VERSION).not_to be nil
   end
 
   context "api_id param during initialization" do

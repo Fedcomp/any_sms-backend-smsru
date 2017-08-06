@@ -1,6 +1,10 @@
 AllCops:
   Exclude:
-    - "lib/active_sms-backend-smsru.rb"
+    - "lib/any_sms-backend-smsru.rb"
+
+Metrics/BlockLength:
+  Exclude:
+      - "spec/**/*"
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes

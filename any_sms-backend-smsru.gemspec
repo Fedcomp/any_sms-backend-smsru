@@ -1,16 +1,18 @@
 # coding: utf-8
+
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "active_sms/backend/smsru/version"
+require "any_sms/backend/smsru/version"
 
+# rubocop:disable Metrics/BlockLength
 Gem::Specification.new do |spec|
-  spec.name          = "active_sms-backend-smsru"
-  spec.version       = ActiveSMS::Backend::SMSRU_VERSION
+  spec.name          = "any_sms-backend-smsru"
+  spec.version       = AnySMS::Backend::SMSRU_VERSION
   spec.authors       = ["Fedcomp"]
   spec.email         = ["aglergen@gmail.com"]
 
-  spec.summary       = "ActiveSMS backend for sms.ru service"
-  spec.homepage      = "https://github.com/Fedcomp/active_sms-backend-smsru"
+  spec.summary       = "AnySMS backend for sms.ru service"
+  spec.homepage      = "https://github.com/Fedcomp/any_sms-backend-smsru"
   spec.license       = "MIT"
 
   unless spec.respond_to?(:metadata)
@@ -26,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "active_sms"
+  spec.add_dependency "any_sms"
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
