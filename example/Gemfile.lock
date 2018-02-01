@@ -1,0 +1,19 @@
+PATH
+  remote: ../..
+  specs:
+    any_sms (0.4.0)
+    any_sms-backend-smsru (0.1.0)
+      any_sms (~> 0.4.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  any_sms-backend-smsru!
+
+BUNDLED WITH
+   1.16.1

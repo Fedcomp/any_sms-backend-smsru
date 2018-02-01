@@ -9,21 +9,23 @@ class AnySMS::Backend::Smsru < AnySMS::Backend::Base
     success: 100
   }.freeze
 
-  def initialize(params = {})
-    @api_id = params.delete(:api_id)
+  def initialize(api_id:)
+    @api_id = api_id
     validate_api_id
   end
 
-  def send_sms(phone, sms_text)
-    response = request_api(to: phone, text: sms_text)
-    data = parse(response)
+  def send_sms(phone, sms_text, _args = {})
+    data = parse(request_api(to: phone, text: sms_text))
 
     case data[:status]
     when API_STATUS_CODE[:success]
       respond_with_status :success
     else
-      respond_with_status "unhandled_status_#{data[:status]}".to_sym
+      respond_with_status "unhandled_status_#{data[:status]}".to_sym,
+                          meta: { error: "Error, code: #{data[:status]}" }
     end
+  rescue StandardError => e
+    respond_with_status :runtime_error, meta: { error: e }
   end
 
   private

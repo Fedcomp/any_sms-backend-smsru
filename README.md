@@ -10,14 +10,13 @@ backend for [AnySMS](https://github.com/Fedcomp/any_sms) to work with [sms.ru](h
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "any_sms"
-gem "any_sms-backend-smsru"
+gem "any_sms-backend-smsru", "~> 0.1.0"
 ```
 
 Then somewhere in your initialization code:
 
 ```ruby
-require "any_sms"
+require "any_sms-backend-smsru"
 
 AnySMS.configure do |c|
   c.register_backend :my_main_backend,
